@@ -38,5 +38,21 @@ module Homey
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.generators do |g|
+      g.skip_routes true
+      g.helper false
+      g.assets false
+      g.test_framework :rspec, fixture: false
+      g.fixture_replacement :factory_bot, dir: "spec/factories"
+      g.helper_specs false
+      g.controller_specs false
+      g.system_tests false
+      g.view_specs false
+    end
+
+    # GZip all responses
+    # TODO: remove if using nginx in deployment
+    config.middleware.use Rack::Deflater
   end
 end
