@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem "bootsnap", require: false
+gem "bcrypt", "~> 3.1", ">= 3.1.20"
 gem "importmap-rails"
 gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
