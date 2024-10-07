@@ -1,0 +1,8 @@
+<div>
+  <% if flash[:notice].present? %>
+    <p id="notice" class="bg-blue-500 text-white p-4 mb-4"><%= flash[:notice] %></p>
+  <% end %>
+  <% if flash[:alert].present? %>
+    <p id="alert" class="bg-red-500 text-white p-4 mb-4"><%= flash[:alert] %></p>
+  <% end %>
+</div>
