@@ -1,4 +1,37 @@
 <div>
-  <h1 class="font-bold text-4xl">User::Registrations#new</h1>
-  <p>Find me in app/views/user/registrations/new.html.erb</p>
+  <h1 class="font-bold text-4xl">Sign up</h1>
+  <%# locals: (registration_form:) -%>
+  <%= form_with(model: registration_form, url: users_registration_path) do |form| %>
+    <% if form.object.errors.any? %>
+      <div role="alert">
+        <strong class="font-bold">There were some errors with your submission</strong>
+        <ul>
+          <% form.object.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <div class="mb-4">
+        <%= form.label :email %>
+        <%= form.email_field :email %>
+      </div>
+
+      <div class="mb-6">
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+      </div>
+
+      <div class="mb-6">
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation %>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <%= form.submit "Sign up" %>
+      </div>
+    </div>
+  <% end %>
 </div>
