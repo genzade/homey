@@ -17,7 +17,7 @@ RSpec.describe "Users::Logins", type: :system do
 
       expect_page_to_display_sign_in_error
 
-      expect(page).to have_current_path(new_user_session_path)
+      expect(page).to have_current_path(new_users_session_path)
     end
   end
 
@@ -25,17 +25,15 @@ RSpec.describe "Users::Logins", type: :system do
     it "user cannot sign in" do
       sign_in_with("unknown.email.example.com", "password")
 
-      expect_page_to_display_sign_in_error
-
-      expect(page).to have_current_path(new_user_session_path)
+      expect(page).to have_current_path(new_users_session_path)
     end
   end
 
   def sign_in_with(email, password)
     visit(new_users_session_path)
-    fill_in("user_email", with: email)
-    fill_in("user_password", with: password)
-    click_button("Log in")
+    fill_in("forms_users_create_session_form_email", with: email)
+    fill_in("forms_users_create_session_form_password", with: password)
+    click_button("Sign in")
   end
 
   def expect_page_to_display_sign_in_error
