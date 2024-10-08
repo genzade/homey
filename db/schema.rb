@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_08_181422) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_08_230722) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_181422) do
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["project_id"], name: "index_comments_on_project_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "project_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_users_on_project_id"
+    t.index ["user_id"], name: "index_project_users_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -44,4 +53,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_181422) do
   add_foreign_key "comments", "comments", column: "parent_id", on_delete: :cascade
   add_foreign_key "comments", "projects", on_delete: :cascade
   add_foreign_key "comments", "users"
+  add_foreign_key "project_users", "projects"
+  add_foreign_key "project_users", "users"
 end
