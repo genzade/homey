@@ -7,6 +7,8 @@ class Project < ApplicationRecord
 
   has_many :project_users, dependent: :destroy
   has_many :users, through: :project_users
+  has_many :comments, inverse_of: :project, dependent: :destroy
+
   validates :name, presence: true
 
   enum :status, STATUS_OPTIONS, default: :ignition
