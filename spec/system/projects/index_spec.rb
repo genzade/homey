@@ -22,7 +22,7 @@ RSpec.describe "Projects::Index", type: :system do
 
       visit(projects_path)
 
-      expect(page).to have_link("Show", href: project_path(project))
+      expect(page).to have_link("View project", href: project_path(project))
     end
   end
 end

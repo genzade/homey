@@ -1,4 +1,17 @@
-<div>
-  <h1 class="font-bold text-4xl">Projects#index</h1>
-  <p>Find me in app/views/projects/index.html.erb</p>
+<%# (projects:) %>
+<div class="flex gap-2">
+  <% projects.each do |project| %>
+    <div class="grid grid-rows-2 gap-4 border-2 border-black rounded p-4">
+      <div>
+        <p><strong>Name: </strong><%= project.name %></p>
+      </div>
+
+      <div>
+        <p><strong>Status: </strong><%= project.status %></p>
+      </div>
+
+      <p>Created <strong><%= time_ago_in_words project.created_at %></strong> ago</p>
+      <%= link_to "View project", project_path(project) %>
+      </div>
+  <% end %>
 </div>
