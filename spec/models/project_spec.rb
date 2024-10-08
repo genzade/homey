@@ -15,4 +15,9 @@ RSpec.describe Project, type: :model do
         .backed_by_column_of_type(:string)
     end
   end
+
+  describe "associations" do
+    it { is_expected.to have_many(:project_users).dependent(:destroy) }
+    it { is_expected.to have_many(:users).through(:project_users) }
+  end
 end

@@ -5,6 +5,8 @@ class Project < ApplicationRecord
     completed: "completed",
   }.freeze
 
+  has_many :project_users, dependent: :destroy
+  has_many :users, through: :project_users
   validates :name, presence: true
 
   enum :status, STATUS_OPTIONS, default: :ignition
