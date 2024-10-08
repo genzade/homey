@@ -4,4 +4,9 @@ class ProjectsController < ApplicationController
 
     render locals: { projects: @projects }
   end
+
+  def show
+    @project = Project.find(params[:id])
+    render locals: { project: @project }
+  end
 end

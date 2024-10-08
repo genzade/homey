@@ -1,0 +1,15 @@
+<div>
+  <div class="flex justify-between items-center">
+    <%= link_to 'Back', projects_path %>
+  </div>
+
+  <div class="grid grid-rows-2 gap-4 border-2 border-black rounded p-4">
+    <div>
+      <p><strong>Name: </strong><%= project.name %></p>
+    </div>
+
+    <div>
+      <p><strong>Status: </strong><%= project.status %></p>
+    </div>
+  </div>
+</div>
