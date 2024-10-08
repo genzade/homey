@@ -31,16 +31,4 @@ RSpec.describe "Users::Registrations", type: :system do
       expect(page).to have_text("Password confirmation doesn't match Password")
     end
   end
-
-  def sign_up_with(**args)
-    password = args.fetch(:password)
-
-    fill_in("forms_users_registration_form_email", with: args.fetch(:email))
-    fill_in("forms_users_registration_form_password", with: password)
-
-    password_confirmation = args.fetch(:same_password, true) ? password : "-#{password}-"
-    fill_in("forms_users_registration_form_password_confirmation", with: password_confirmation)
-
-    click_button("Sign up")
-  end
 end
