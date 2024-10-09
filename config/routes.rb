@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   resources :projects do
     resource :comments, only: %i[new create], module: :projects
+    resources :histories, only: %i[index], module: :projects
   end
 end
