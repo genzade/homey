@@ -42,7 +42,7 @@ RSpec.describe "Projects::Show", type: :system do
 
         visit(project_path(project))
 
-        select(status, from: "in_progress")
+        select("in_progress", from: "forms_projects_update_status_form_status")
 
         expect(page).to have_content("Status Changes")
         expect(page).to have_content("#{user.email} updated status from ignition to in_progress")
