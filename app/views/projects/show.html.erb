@@ -12,4 +12,7 @@
       <p><strong>Status: </strong><%= project.status %></p>
     </div>
   </div>
+
+  <h3>Comments</h3>
+  <%= turbo_frame_tag dom_id(project, :new_comment), src: new_project_comments_path(project_id: project.id) %>
 </div>
