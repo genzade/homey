@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     resource :session, only: %i[new create destroy]
   end
 
-  resources :projects
+  resources :projects do
+    resource :comments, only: %i[new create], module: :projects
+  end
 end
