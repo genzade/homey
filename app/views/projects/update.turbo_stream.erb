@@ -1,0 +1,4 @@
+<%# locals: (project:) -%>
+<%= turbo_stream.replace dom_id(project, :update_project) do %>
+  <%= turbo_frame_tag(dom_id(project, :update_project), src: edit_project_path(project)) %>
+<% end %>
