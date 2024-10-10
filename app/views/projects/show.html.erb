@@ -3,16 +3,12 @@
     <%= link_to 'Back', projects_path %>
   </div>
 
-  <div class="grid grid-rows-2 gap-4 border-2 border-black rounded p-4">
-    <div>
-      <p><strong>Name: </strong><%= project.name %></p>
-    </div>
-
-    <div>
-      <p><strong>Status: </strong><%= project.status %></p>
-    </div>
+  <div class="grid grid-rows-2 gap-4 border-2 border-blue-300 rounded p-4">
+    <%= turbo_frame_tag(
+      dom_id(project, :update_project), src: edit_project_path(project_id: project.id)
+    ) %>
+    <%= turbo_frame_tag(
+      dom_id(project, :new_comment), src: new_project_comments_path(project_id: project.id)
+    ) %>
   </div>
-
-  <h3>Comments</h3>
-  <%= turbo_frame_tag dom_id(project, :new_comment), src: new_project_comments_path(project_id: project.id) %>
 </div>

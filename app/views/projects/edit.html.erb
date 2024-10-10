@@ -1,0 +1,33 @@
+<%# locals: (update_project_form:, project:) -%>
+<%= turbo_frame_tag dom_id(project, :update_project) do %>
+  <div class="border-black w-full h-full">
+    <%= form_with(model: update_project_form, url: project_path(project), method: :patch) do |form| %>
+      <% if form.object.errors.any? %>
+        <div role="alert">
+          <strong class="font-bold">There were some errors with your submission</strong>
+          <ul>
+            <% form.object.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div>
+        <p><strong>Name: </strong></p>
+        <%= form.text_field :name, value: project.name %>
+        <%= form.submit :update, class: "bg-blue-400 py-auto px-4 rounded-3xl text-white h-8" %>
+      </div>
+
+      <div>
+        <p><strong>Status: </strong></p>
+        <%= form.select(
+          :status,
+          Project::STATUS_OPTIONS.values.map{ |value| [value.humanize, value] },
+          { selected: project.status },
+          { onchange: "this.form.requestSubmit()" }
+        ) %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
