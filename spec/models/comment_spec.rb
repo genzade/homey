@@ -15,5 +15,6 @@ RSpec.describe Comment, type: :model do
       is_expected.to have_many(:comments)
         .with_foreign_key(:parent_id).inverse_of(:parent).dependent(:destroy)
     end
+    it { is_expected.to have_many(:histories).dependent(:destroy) }
   end
 end

@@ -20,5 +20,6 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many(:project_users).dependent(:destroy) }
     it { is_expected.to have_many(:users).through(:project_users) }
     it { is_expected.to have_many(:comments).inverse_of(:project).dependent(:destroy) }
+    it { is_expected.to have_many(:histories).dependent(:destroy) }
   end
 end
