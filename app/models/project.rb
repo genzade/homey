@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  include Trackable
+
   STATUS_OPTIONS = {
     ignition: "ignition",
     in_progress: "in_progress",
