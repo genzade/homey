@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_08_230722) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_11_004216) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_230722) do
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["project_id"], name: "index_comments_on_project_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "histories", force: :cascade do |t|
+    t.string "trackable_type", null: false
+    t.bigint "trackable_id", null: false
+    t.bigint "user_id", null: false
+    t.string "action", null: false
+    t.string "tracked_field"
+    t.string "tracked_value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trackable_type", "trackable_id"], name: "index_histories_on_trackable"
+    t.index ["user_id"], name: "index_histories_on_user_id"
   end
 
   create_table "project_users", force: :cascade do |t|
@@ -53,6 +66,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_230722) do
   add_foreign_key "comments", "comments", column: "parent_id", on_delete: :cascade
   add_foreign_key "comments", "projects", on_delete: :cascade
   add_foreign_key "comments", "users"
+  add_foreign_key "histories", "users"
   add_foreign_key "project_users", "projects"
   add_foreign_key "project_users", "users"
 end
