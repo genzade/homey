@@ -17,6 +17,8 @@ module Forms
 
         comment.save!
 
+        create_history
+
         true
       end
 
@@ -35,6 +37,15 @@ module Forms
           user: user,
           project: project,
           # parent: parent,
+        )
+      end
+
+      def create_history
+        CreateHistoryJob.perform_async(
+          user.id,
+          comment.id,
+          "Comment",
+          History::ACTION_OPTIONS[:created],
         )
       end
     end
