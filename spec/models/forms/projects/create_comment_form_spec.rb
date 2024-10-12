@@ -42,6 +42,13 @@ RSpec.describe Forms::Projects::CreateCommentForm, type: :model do
                 ),
               ),
             )
+          .and enqueue_sidekiq_job(CreateHistoryJob)
+          .with(
+            user.id,
+            a_value,
+            "Comment",
+            History::ACTION_OPTIONS[:created],
+          )
       end
     end
   end
