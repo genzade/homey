@@ -33,6 +33,24 @@ RSpec.describe Forms::UpdateProjectForm, type: :model do
               ),
             ),
           )
+          .and enqueue_sidekiq_job(CreateHistoryJob)
+          .with(
+            user.id,
+            a_value,
+            "Project",
+            "status",
+            Project::STATUS_OPTIONS[:in_progress],
+            History::ACTION_OPTIONS[:updated],
+          )
+          .and enqueue_sidekiq_job(CreateHistoryJob)
+          .with(
+            user.id,
+            a_value,
+            "Project",
+            "name",
+            "New Name",
+            History::ACTION_OPTIONS[:updated],
+          )
       end
     end
 

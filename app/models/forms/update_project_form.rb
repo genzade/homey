@@ -17,6 +17,9 @@ module Forms
       return false unless valid?
 
       project.assign_attributes(update_params)
+
+      create_history
+
       project.save!
 
       true
@@ -33,6 +36,19 @@ module Forms
 
     def update_params
       { name: name, status: status }.compact
+    end
+
+    def create_history
+      project.changes.each do |field, changes|
+        CreateHistoryJob.perform_async(
+          user.id,
+          project.id,
+          "Project",
+          field,
+          changes.last,
+          History::ACTION_OPTIONS[:updated],
+        )
+      end
     end
   end
 end
