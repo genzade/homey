@@ -54,5 +54,7 @@ module Homey
     # GZip all responses
     # TODO: remove if using nginx in deployment
     config.middleware.use Rack::Deflater
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

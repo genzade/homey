@@ -6,6 +6,7 @@ gem "importmap-rails"
 gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
 gem "rails", "~> 7.2.1"
+gem "sidekiq", "~> 7.3", ">= 7.3.2"
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "tailwindcss-rails"
@@ -28,6 +29,7 @@ end
 
 group :test do
   gem "capybara", "~> 3.40"
+  gem "rspec-sidekiq", "~> 5.0"
   gem "selenium-webdriver", "~> 4.25"
   gem "shoulda-matchers", "~> 6.4"
 end
