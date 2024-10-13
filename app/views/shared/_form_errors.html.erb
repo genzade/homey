@@ -1,0 +1,11 @@
+<%# locals: (form:) -%>
+<% if form.object.errors.any? %>
+  <div role="alert">
+    <strong class="font-bold">There were some errors with your submission</strong>
+    <ul>
+      <% form.object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
