@@ -1,24 +1,29 @@
 <%# locals: (update_project_form:, project:) -%>
-<%= turbo_frame_tag dom_id(project, :update_project) do %>
-  <div class="border-black w-full h-full">
+<div class="w-full h-12">
+  <%= turbo_frame_tag dom_id(project, :update_project) do %>
     <%= form_with(model: update_project_form, url: project_path(project), method: :patch) do |form| %>
       <%= render(partial: 'shared/form_errors', locals: { form: form }) %>
 
-      <div>
-        <p><strong>Name: </strong></p>
-        <%= form.text_field :name, value: project.name %>
-        <%= form.submit :update, class: "bg-blue-400 py-auto px-4 rounded-3xl text-white h-8" %>
-      </div>
+      <div class="grid grid-flow-col gap-3 h-fit">
+        <div class="h-auto">
+          <div class="flex gap-3">
+            <h2 class="font-extrabold text-3xl text-blue-800"><%= project.name %></h2>
+            <p class="text-justify"><strong class="text-justify text-blue-700">Name: </strong></p>
+            <%= form.text_field :name, value: project.name, class: "rounded text-blue-500 w-full h-fit" %>
+            <%= form.submit :update, class: "bg-blue-400 inline-flex items-center border border-indigo-300 px-3 py-1.5 rounded-md h-fit text-white hover:text-blue-400 hover:bg-indigo-50" %>
+          </div>
+        </div>
 
-      <div>
-        <p><strong>Status: </strong></p>
-        <%= form.select(
-          :status,
-          Project::STATUS_OPTIONS.values.map{ |value| [value.humanize, value] },
-          { selected: project.status },
-          { onchange: "this.form.requestSubmit()" }
-        ) %>
+        <div class="flex gap-3">
+          <p><strong class="text-blue-700">Status: </strong></p>
+          <%= form.select(
+            :status,
+            Project::STATUS_OPTIONS.values.map{ |value| [value.humanize, value] },
+            { selected: project.status },
+            { onchange: "this.form.requestSubmit()", class: "rounded text-blue-500 h-fit" }
+          ) %>
+        </div>
       </div>
     <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>

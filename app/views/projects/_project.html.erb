@@ -1,0 +1,13 @@
+<div class="grid grid-rows-2 gap-4 border-2 border-blue-300 rounded p-4">
+  <div>
+    <p class="text-blue-900"><strong><%= project.name %></strong></p>
+  </div>
+
+  <div class="flex gap-3">
+    <p class="text-blue-700"><strong>Status: </strong></p>
+    <p class="text-blue-700 uppercase"><%= project.status.humanize %></p>
+  </div>
+
+  <small class="text-blue-500">Created <strong><%= time_ago_in_words project.created_at %></strong> ago</small>
+  <%= link_to "View project", project_path(project), class: "text-blue-500" %>
+</div>

@@ -23,7 +23,7 @@
   <body>
     <%= render(partial: 'shared/flash_alerts', locals: { flash: flash, notice: notice, alert: alert }) %>
     <%= render(partial: 'shared/nav') %>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto px-5 flex">
       <%= yield %>
     </main>
   </body>

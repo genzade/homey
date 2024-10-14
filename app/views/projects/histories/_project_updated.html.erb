@@ -1,17 +1,17 @@
-<div class="basis-2/12 pr-2 py-1 font-bold">
+<div class="basis-2/12 pr-2 py-1 font-bold text-blue-800">
   <%= history.author %>
 </div>
 
-<div class="basis-1/12 pr-2">
+<div class="basis-1/12 pr-2 py-1 text-blue-500">
   <%= history.action %>
 </div>
 
-<div class="basis-1/12 pr-2">
+<div class="basis-1/12 pr-2 py-1 font-bold text-blue-800">
   <%= history.trackable_type %>
 </div>
 
-<div class="basis-8/12 pr-2">
-  <%= history.tracked_field %>
+<div class="basis-8/12 pr-2 py-1 font-bold text-blue-500">
+  <%= history.tracked_field.humanize %>
 
-  to <%= history.tracked_value %>
+  to <strong><%= history.tracked_value %></strong>
 </div>

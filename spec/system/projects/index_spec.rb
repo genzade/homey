@@ -10,11 +10,11 @@ RSpec.describe "Projects::Index", type: :system do
       visit(projects_path)
 
       expect(page).to have_content("Project 1")
-      expect(page).to have_content("ignition")
+      expect(page).to have_content("IGNITION")
       expect(page).to have_content("Project 2")
-      expect(page).to have_content("in_progress")
+      expect(page).to have_content("IN PROGRESS")
       expect(page).to have_content("Project 3")
-      expect(page).to have_content("completed")
+      expect(page).to have_content("COMPLETED")
     end
 
     it "displays a link to project show page" do
