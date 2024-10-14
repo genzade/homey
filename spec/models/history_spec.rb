@@ -13,4 +13,13 @@ RSpec.describe History, type: :model do
         .backed_by_column_of_type(:string)
     end
   end
+
+  describe "#author" do
+    it "returns the email of the user" do
+      user = build(:user)
+      history = build(:history, user: user)
+
+      expect(history.author).to eq(user.email)
+    end
+  end
 end

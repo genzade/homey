@@ -9,4 +9,8 @@ class History < ApplicationRecord
   belongs_to :user
 
   enum :action, ACTION_OPTIONS
+
+  def author
+    user.email
+  end
 end
