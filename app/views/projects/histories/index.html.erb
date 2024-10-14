@@ -1,9 +1,9 @@
-<div class="w-full">
-  <div id="history_list">
-    <% histories.each do |history| %>
-      <%= render partial: "history", locals: { history: history, trackable: history.trackable } %>
-    <% end %>
+<%= turbo_frame_tag dom_id(project, :histories) do %>
+  <div class="w-full">
+    <div id="history_list">
+      <%= render partial: "history", collection: histories, as: :history %>
+    </div>
   </div>
-</div>
 
-<%= turbo_stream_from "histories" %>
+  <%= turbo_stream_from "histories" %>
+<% end %>
