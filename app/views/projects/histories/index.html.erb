@@ -1,0 +1,9 @@
+<div class="w-full">
+  <div id="history_list">
+    <% histories.each do |history| %>
+      <%= render partial: "history", locals: { history: history, trackable: history.trackable } %>
+    <% end %>
+  </div>
+</div>
+
+<%= turbo_stream_from "histories" %>

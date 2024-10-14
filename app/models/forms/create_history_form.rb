@@ -19,6 +19,8 @@ module Forms
 
       history.save!
 
+      boradcast_event(history)
+
       true
     end
 
@@ -35,6 +37,15 @@ module Forms
         action: action,
         tracked_field: tracked_field,
         tracked_value: tracked_value,
+      )
+    end
+
+    def boradcast_event(history)
+      history.broadcast_prepend_to(
+        "histories",
+        partial: "projects/histories/history",
+        locals: { history: history },
+        target: "history_list",
       )
     end
   end

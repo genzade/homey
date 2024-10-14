@@ -1,0 +1,13 @@
+<div class="flex flex-row">
+  <% if history.trackable_type.eql?("Comment") %>
+    <%= render(
+      partial: "projects/histories/#{history.trackable_type.underscore}_#{history.action}",
+      locals: { history: history, comment: history.trackable }
+    ) %>
+  <% else %>
+    <%= render(
+      partial: "projects/histories/#{history.trackable_type.underscore}_#{history.action}",
+      locals: { history: history }
+    ) %>
+  <% end %>
+</div>
