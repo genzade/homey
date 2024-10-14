@@ -10,6 +10,8 @@ class History < ApplicationRecord
 
   enum :action, ACTION_OPTIONS
 
+  scope :by_trackable, ->(trackable) { where(trackable: trackable) }
+
   def author
     user.email
   end

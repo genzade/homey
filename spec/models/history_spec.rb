@@ -14,6 +14,18 @@ RSpec.describe History, type: :model do
     end
   end
 
+  describe "scopes" do
+    describe ".by_trackable" do
+      it "returns histories by trackable" do
+        project = create(:project)
+        history = create(:history, trackable: project)
+        query = History.by_trackable(project)
+
+        expect(query).to eq([ history ])
+      end
+    end
+  end
+
   describe "#author" do
     it "returns the email of the user" do
       user = build(:user)
