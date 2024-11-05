@@ -180,7 +180,7 @@ GEM
     puma (6.4.3)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.1.7)
+    rack (3.1.8)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -290,8 +290,7 @@ GEM
       websocket (~> 1.0)
     shoulda-matchers (6.4.0)
       activesupport (>= 5.2.0)
-    sidekiq (7.3.2)
-      concurrent-ruby (< 2)
+    sidekiq (7.3.5)
       connection_pool (>= 2.3.0)
       logger
       rack (>= 2.2.4)
@@ -369,7 +368,7 @@ DEPENDENCIES
   rubocop-rails-omakase
   selenium-webdriver (~> 4.25)
   shoulda-matchers (~> 6.4)
-  sidekiq (~> 7.3, >= 7.3.2)
+  sidekiq (~> 7.3)
   sprockets-rails
   stimulus-rails
   tailwindcss-rails
