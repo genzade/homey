@@ -16,7 +16,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 group :development, :test do
   gem "brakeman", require: false
-  gem "bullet", "~> 7.2"
+  gem "bullet", "~> 8.0"
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "factory_bot_rails", "~> 6.4", ">= 6.4.3"
   gem "pry-byebug", "~> 3.10", ">= 3.10.1"
